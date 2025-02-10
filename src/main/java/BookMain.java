@@ -1,3 +1,5 @@
+import exception.BookNotFoundException;
+import exception.InsufficientStockException;
 import model.Book;
 import service.BookStoreService;
 
@@ -7,67 +9,55 @@ public class BookMain {
 
     public static void main(String[] args) {
 
-        /*Book book1 = new Book("B101", "Java Programming", "James Gosling", 50.0, 10);
-        Book book2 = new Book("B103", "Clean Code", "Robert C. Martin", 40.0, 5);
-        Book book3 = new Book("B103", "Effective Java", "Joshua Bloch", 55.0, 8);*/
-
+        char input;
         BookStoreService bookStoreService = new BookStoreService();
 
-        Scanner scanner = new Scanner(System.in);
+        // Adding books
+        System.out.println("---Adding Books---");
+        bookStoreService.addBook();
 
-        System.out.println("Welcome to Online Bookstore System");
-        System.out.println();
-        System.out.println("1. Add books to the bookstore");
-        System.out.println("2. Purchase books from the bookstore");
-        System.out.println("3. Display all the books");
-        System.out.println("4. Display the purchased books");
-        System.out.println("5. Display the Unique authors");
-        System.out.println("6. Display the total Inventory value");
+        // Removing the books
+        System.out.println("\n---Removing books---");
+        bookStoreService.removeBook("B101");
 
-        int choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-                System.out.println("Enter Book Id:");
-                String bookId = scanner.next();
-
-                System.out.println("Enter book title : ");
-                String title = scanner.next();
-
-                System.out.println("Enter book author : ");
-                String author = scanner.next();
-
-                System.out.println("Enter book price : ");
-                Double price = scanner.nextDouble();
-
-                System.out.println("Enter book quantity : ");
-                int quantity = scanner.nextInt();
-
-                bookStoreService.addBook(new Book(bookId, title, author, price, quantity));
-                break;
-
-            case 2:
-                bookStoreService.purchaseBook("B101", 1);
-                break;
-
-            case 3:
-                bookStoreService.searchBook("Java Programming");
-                break;
-
-            case 4:
-                bookStoreService.listPurchasedBooks();
-                break;
-
-            case 5:
-                bookStoreService.displayUniqueAuthors();
-                break;
-
-            case 6:
-                bookStoreService.getInventoryValue();
-                break;
-
-            default:
-                break;
+        // Purchasing books ---> Check each purchaseBook() method calls one after the other by commenting them out.
+        System.out.println("---Purchasing books---");
+        try {
+            // successful
+            bookStoreService.purchaseBook("B102", 2);
+            // Book not found
+            //bookStoreService.purchaseBook("B110", 12);
+            // Insufficient Stock
+            //bookStoreService.purchaseBook("B105", 25);
+        } catch (BookNotFoundException | InsufficientStockException e) {
+            System.out.println(e.getMessage());
         }
+
+        // Check all available books
+        /*System.out.println("---Check all available books---");
+        bookStoreService.viewBooks();*/
+
+
+        // Search Book By Title
+        System.out.println("\n---Search book by title---");
+        try {
+            bookStoreService.searchBook("Effective Java"); // Successful
+            bookStoreService.searchBook("DSA with Java"); // Exception
+        } catch (BookNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Display Books Lexicographically
+        System.out.println("\n---Display Books Lexicographically---");
+        bookStoreService.displayBooksLexicographically();
+
+        // Display Unique Authors List
+        System.out.println("\n---Display Unique Authors List---");
+        bookStoreService.displayUniqueAuthors();
+
+        // Display Total Inventory value
+        System.out.println("\n---Display Total Inventory value---");
+        bookStoreService.getInventoryValue();
 
     }
 }

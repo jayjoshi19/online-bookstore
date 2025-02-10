@@ -6,14 +6,19 @@ public class Book {
     private String title;
     private String author;
     private double price;
-    private int quantity;
+    private int availableQty;
+    private int purchasedQty;
 
-    public Book(String bookId, String title, String author, double price, int quantity) {
+    public Book(String bookId, String title, String author, double price, int availableQty) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.price = price;
-        this.quantity = quantity;
+        this.availableQty = availableQty;
+    }
+
+    public Book(){
+
     }
 
     public String getBookId() {
@@ -48,12 +53,20 @@ public class Book {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getAvailableQty() {
+        return availableQty;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setAvailableQty(int availableQty) {
+        this.availableQty = availableQty;
+    }
+
+    public int getPurchasedQty() {
+        return purchasedQty;
+    }
+
+    public void setPurchasedQty(int purchasedQty) {
+        this.purchasedQty = purchasedQty;
     }
 
     @Override
@@ -63,7 +76,8 @@ public class Book {
         sb.append(", title='").append(title).append('\'');
         sb.append(", author='").append(author).append('\'');
         sb.append(", price=").append(price);
-        sb.append(", quantity=").append(quantity);
+        sb.append(", availableQty=").append(availableQty);
+        sb.append(", purchasedQty=").append(purchasedQty);
         sb.append('}');
         return sb.toString();
     }
