@@ -24,14 +24,16 @@ public class BookStoreService {
         Book book3 = new Book("B103", "Effective Java", "Joshua Bloch", 55.00, 12);
         Book book4 = new Book("B104", "Programming with C", "E Balagurusamy", 85.00, 13);
         Book book5 = new Book("B105", "SQL, PL/SQL", "Ivan Bayross", 55.00, 17);
+        Book book6 = new Book("B106", "SQL, PL/SQL", "E Balagurusamy", 75.00, 14);
 
         bookArrayList.add(book1);
         bookArrayList.add(book2);
         bookArrayList.add(book3);
         bookArrayList.add(book4);
         bookArrayList.add(book5);
+        bookArrayList.add(book6);
 
-        // available books
+        // see available books
         viewBooks();
     }
 
@@ -42,11 +44,11 @@ public class BookStoreService {
         while (itr.hasNext()) {
             Book book = itr.next();
             if (book.getBookId().equals(bookId)) {
-                System.out.println("Removing the book with id : " + bookId);
+                System.out.println("Removing the book with id : " + bookId + ", '" + book.getTitle() + "'");
                 itr.remove();
             }
         }
-        System.out.println("---Available books after removing the book : " + bookId);
+        System.out.println("---Available books after removing the book : " + bookId + ", '" + book.getTitle() + "'");
         viewBooks();
         System.out.println();
     }
@@ -75,7 +77,7 @@ public class BookStoreService {
 
                 // if specified quantity is found, then it will help purchase the book for the user
                 if (quantity <= book.getAvailableQty()) {
-                    System.out.println("Purchasing the book with id : " + bookId);
+                    System.out.println("Purchasing the book with id : " + bookId + ", '" + book.getTitle()+"'");
                     book.setAvailableQty(book.getAvailableQty() - quantity);
                     book.setPurchasedQty(quantity);
 
@@ -84,15 +86,15 @@ public class BookStoreService {
                     displayPurchasedBook(book);
                 }
                 // if specified purchase qty is not found, then insufficient stock exception will be thrown
-                if (quantity > book.getAvailableQty()) {
+                else if (quantity > book.getAvailableQty()) {
                     System.out.println();
-                    throw new InsufficientStockException("Quantity for " + bookId + " is not sufficient in the stock");
+                    throw new InsufficientStockException("Quantity for " + bookId + ", '" + book.getTitle() + "' is not sufficient in the stock");
                 }
 
             } else if (!isFound){
                 // if the book is not found in the store, then Book not found exception will be thrown
                 System.out.println();
-                throw new BookNotFoundException("Book with id : " + bookId + ", '" + book.getTitle() + "' is not found in the store");
+                throw new BookNotFoundException("Book : " + bookId + ", '" + book.getTitle() + "' is not found in the store");
             }
         }
 

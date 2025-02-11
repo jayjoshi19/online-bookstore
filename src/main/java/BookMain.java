@@ -26,9 +26,9 @@ public class BookMain {
             // successful
             bookStoreService.purchaseBook("B102", 2);
             // Book not found
-            //bookStoreService.purchaseBook("B110", 12);
+            //bookStoreService.purchaseBook("B1020", 12);
             // Insufficient Stock
-            //bookStoreService.purchaseBook("B105", 25);
+            //bookStoreService.purchaseBook("B102", 55);
         } catch (BookNotFoundException | InsufficientStockException e) {
             System.out.println(e.getMessage());
         }

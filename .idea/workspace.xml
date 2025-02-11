@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9792234c-d886-4f09-8c07-46f949548b1d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/BookMain_backup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BookMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BookMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BookMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/exception/InsufficientStockException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/InsufficientStockException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/BookStoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BookStoreService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,16 +97,6 @@
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/BookStoreService.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/BookStoreService.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
